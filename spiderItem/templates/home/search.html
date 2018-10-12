@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form action="search.html" method="post">
+        <div class="form-group">
+            <label>请输入视频地址(支持梨视频、爆米花视频、Youtube视频、Instagram视频)：</label>
+            <input type="url" class="form-control input-lg " name="url" placeholder="视频地址">
+            <button type="submit" class="btn btn-primary center-block btn-lg active ">确定</button>
+        </div>
+        <div>
+            {% if status == 2 %}
+                <p class="text-danger">输入网址不符请重新输入！</p>
+            {% elif status == 3 %}
+                <p class="text-success">视频下载完毕！</p>
+                 <a href="/video/{{ pname}}" download="{{ pname }}" class="btn btn-primary btn-lg active" role="button">点击保存</a>
+
+            {% else %}
+
+
+            {% endif  %}
+        </div>
+
+        {% csrf_token %}
+    </form>
+
+{% endblock %}
